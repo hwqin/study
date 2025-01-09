@@ -36,6 +36,6 @@ function maxsubarray(arr) {
 }
 
 arr2 = [-1, 1, 2, 3, -2];
-arr3 = [-1, 0, 1, -8, 9, -1, 1, 2, 3, -2];
+arr3 = [-1, 0, 1, -8, 9, -1, 1, 2, 3, -2, 1, 2, -16, 2, 101];
 maxsubarray(arr2);
 maxsubarray(arr3);
