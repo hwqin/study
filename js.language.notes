@@ -1,0 +1,201 @@
+JavaScript
+
+Array
+var arr = []
+Arr[index]
+arr.push()
+arr.unshift()
+
+Arr.pop
+Arr.shift
+
+arr.splice (index, count, obj) replace how count element at index with obj, count can be 0, obj can be optional to remove
+filter() filter to test and create a new array
+map() map to new array
+reduce() reduce array to single scala value
+
+Push, unshift, pop, shift;  splice
+
+options.filer(v=> v != ‘’).map(v => some object)
+
+arr.filter(v=> v> 0).map(v=> {key:v, value: station[v]}
+For (i)
+For (const n in array) {
+}
+For (let i = 0l; i < arrl.length; i++ ){}
+
+
+Object
+var o = {p1:””, p2:””}
+O[a] = b
+O[a]
+If (a in o.key)
+Delete s.property
+
+If key in s {
+}
+If o hasOwnProperty(key) {
+}
+
+O.keys
+O.values
+O.entries 
+
+For key in o,keys {
+}
+
+
+Set
+var s = new set[]
+add(1) add(string) add(json)
+has()
+clear()
+delete()
+Size
+mySet.forEach(value => {
+   console.log(value);
+});
+
+Union; difference; subset;
+Intersection:  const intersectionSet = new Set([...setA].filter(x => setB.has(x))); // {2, 3}
+
+difference const differenceSet = new Set([...setA].filter(x => !setB.has(x))); // {1}
+Subset  const issubset = seta.every (x => setB.has(x)); return true or false
+
+
+
+Map
+var m = new map()
+map.set(key value)
+map.get(key)
+
+Set
+Get
+Has()
+
+Delete()
+Clear()
+Size
+
+
+Stack
+	Js use array to implement a stack
+
+Queue
+	Js use array to implement a queue
+
+LinkedList
+	Js use class class node { constructor(value) {
+   this.value = value;
+   this.next = null;
+ }
+Class node {constructor(value) {this.value = value; this.next =null}}
+
+Tree
+
+Class node {constructor(value) {this.value = value; this.leftchild = null; this.rightchild =null;}}
+
+
+Graph
+Class node {constructor(value) {this.value = value; this.adj = new Map()}}
+
+Node.adj.set(node1, 1)
+node.adj.delete(node1)
+
+Important Considerations:
+Multiple Objects with Same String Representation:
+If two different objects have the same string representation, they'll end up mapping to the same key in the object.
+[object use obj.tostring() result as a key]
+
+
+Using Map:
+If you need to use objects as keys without converting them to strings, you can use the Map data structure, which allows any type of value as a key.
+arr = []
+arr[0] = 1
+arr[1] = 2
+arr[5]=100
+for(const n in arr) {
+ console.log(`${n}: ${arr[n]}`)
+}
+console.log(arr[3]) // undefined
+console.log(arr.length)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+* @param {number[]} gas
+* @param {number[]} cost
+* @return {number}
+*/
+function canCompleteCircuit(gas, cost) {
+   var delta = [];
+   const length = gas.length;
+   for (let i = 0; i < length; i++) {
+       delta[i] = gas[i] - cost[i];
+   }
+   let sum = delta[0]; // find runningtotal > 0, and remember index
+   let startindex = 0;
+
+   let maxtotal = delta[0]; // max total
+   let maxstartindex = 0; // max start index
+   let maxendindex = 0; // max end index
+   let start = false;
+   curindex = 1;
+   while (curindex < length) {
+       const curdelta = delta[curindex];
+       const sumsofar = sum + curdelta;
+
+       if (sumsofar < curdelta) {
+           //restart
+           startindex = curindex;
+           sum = curdelta;
+       } else {
+           //extend current sum
+           sum = sumsofar;
+       }
+       if (sum > maxtotal) {
+           maxtotal = sum;
+           maxstartindex = startindex;
+       }
+       curindex +=1;
+   }
+
+   console.log(`delta array: ${delta}`);
+   console.log(`maxstartindex: ${maxstartindex}`);
+  
+   let rtotal = 0;
+   for (let i = 0; i< length; i++){
+       let j = (i + maxstartindex) % length;
+       rtotal += delta[j];
+       console.log(`rtotal = ${rtotal} for index ${j}`);
+       if (rtotal < 0)
+           return -1;
+   }
+   return maxstartindex;
+};
+
+const gas = [1,2,3,4,5]
+const cost = [3,4,5,1,2]
+
+const r = canCompleteCircuit(gas, cost)
+console.log(`${r}`);
+
