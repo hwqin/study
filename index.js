@@ -1,3 +1,4 @@
+/*max sub array algorithm*/
 function maxsubarray(arr) {
     if (arr === null || arr.length === 0) {
         console.log("invalid input")
