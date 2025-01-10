@@ -35,6 +35,30 @@ function maxsubarray(arr) {
     console.log(`max sub array: start index ${maxsi} end index ${maxei}, sum ${maxsum}`);
 }
 
+// gas station problem
+function canCompleteCircuit(gas, cost) {
+    if (gas === null || gas.length === 0 || cost ===null || cost.length === 0) {
+        return -1;
+    }
+    var total = 0;
+    var start = 0;
+    var sum = 0;
+    for (let i = 0; i < gas.length; i ++) {
+        total += (gas[i] - cost[i]);
+        if (sum < 0) {
+            start = i;
+            sum = gas[i] - cost[i];
+        } else {
+            sum += gas[i] - cost[i];
+        }
+    }
+    if (total < 0) {
+        return -1;
+    } else {
+        return start;
+    }
+}
+
 arr2 = [-1, 1, 2, 3, -2];
 arr3 = [-1, 0, 1, -8, 9, -1, 1, 2, 3, -2, 1, 2, -16, 2, 101];
 maxsubarray(arr2);
