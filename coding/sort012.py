@@ -20,3 +20,10 @@ def sort012(arr):
 ## low, mid, high to sort 0,1,2
 ## use low start of 0, high as next postion of 2, mid scan
 ##
+'''
+left=0 mid=0 right= len-1
+while mid <= high:
+    if vmid == 0, exchange  with left left +1; mid+=1
+    if vmid == 2, exchange with  right, right -=1
+    else mid+1
+'''
