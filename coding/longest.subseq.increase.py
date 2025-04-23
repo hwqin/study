@@ -30,7 +30,7 @@ def longestIncreaseSubseq(A):
             if (A[i]> A[j]):
                 tempm = dm[j] + 1
                 dm[i] = max(dm[i], tempm)
-                # print(dm[i])
+                # print(dm[i]); optionally, remember the index of previous number's index in sequence if tempm > dm[i]
     print (dm)
     return max(dm)
 
